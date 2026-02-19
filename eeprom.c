@@ -118,11 +118,9 @@ uint EepRdData(void)
 
     for(int loop = 0; loop < 16; loop++)
     {
-        EE_SK_HIGH();   // tạo rising edge
-        ee_delay();
+        EE_SK_HIGH(); ee_delay();
 
-        EE_SK_LOW();    // data ổn định sau cạnh xuống
-        ee_delay();
+        EE_SK_LOW(); ee_delay();
 
         tmp = (tmp << 1) | EE_DO_READ();
     }
@@ -321,3 +319,4 @@ void EEP_WriteReadTest()
 		}
 	}
 }
+
