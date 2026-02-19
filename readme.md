@@ -50,21 +50,19 @@ The driver uses four signal lines:
 1) Please modify GPIO of (CS / SK /DI) based on your MCU type
 
 /* Serial Clock */
-
 static inline void EE_SK_LOW(void)  { DL_GPIO_clearPins(GPIO_PORTA_PORT, IO_SCK); }
 static inline void EE_SK_HIGH(void) { DL_GPIO_setPins  (GPIO_PORTA_PORT, IO_SCK); }
 
 /* Serial Data Input (MCU -> EEPROM) */
-
 static inline void EE_DI_LOW(void)  { DL_GPIO_clearPins(GPIO_PORTB_PORT, IO_SDI); }
 static inline void EE_DI_HIGH(void) { DL_GPIO_setPins  (GPIO_PORTB_PORT, IO_SDI); }
 
 /* Chip Select */
-
 static inline void EE_CS_LOW(void)  { DL_GPIO_clearPins(GPIO_CS_PORT, EEPROM_CS); }
 static inline void EE_CS_HIGH(void) { DL_GPIO_setPins  (GPIO_CS_PORT, EEPROM_CS); } 
 
 2) Add EEP_WriteReadTest() function to main for eeprom testing
+   
 ---
 
 ## Timing Consideration
@@ -77,5 +75,6 @@ For production use:
 - Replace with a hardware timer delay
 - use cycle-accurate delay (DWT, SysTick, etc.)
 - Ensure Microwire timing requirements from datasheet are satisfied
+
 
 
